@@ -1,9 +1,9 @@
 import React from 'react';
-
+import logo from '../../assets/logo.png';
 const Header = () => {
     return (
         <nav>
-            <h2>This is header</h2>
+            <img src={logo} alt="loading..." />
         </nav>
     );
 };
