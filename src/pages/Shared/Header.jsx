@@ -7,7 +7,7 @@ const Header = () => {
             <div className="text-center">
             <img src={logo} alt="loading..." />
             <p className='text-secondary'><small>Journalism Without Fear or Favour</small></p>
-            <p>{moment().format("dddd, MMMM Do YYYY, h:mm:ss a")}</p>
+            <p>{moment().format("dddd, MMMM D, YYYY")}</p>
             </div>
         </nav>
     );
