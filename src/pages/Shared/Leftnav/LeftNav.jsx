@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const LeftNav = () => {
+    const [categories, setCategories] = useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:5000/categories')
+        .then(res => res.json())
+        .then(data => setCategories(data))
+    },[]);
     return (
-        <div className='text-center'>
-            <h3>I am from Left Nav</h3>
+        <div>
+
         </div>
     );
 };

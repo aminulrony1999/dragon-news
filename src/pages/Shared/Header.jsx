@@ -33,7 +33,7 @@ const Header = () => {
             <Nav>
               <Nav.Link href="#deets">Profile</Nav.Link>
               <Nav.Link eventKey={2} href="#memes">
-              <Button variant="secondary">Log In</Button>{' '}
+              <Button variant="secondary">Log In</Button>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
