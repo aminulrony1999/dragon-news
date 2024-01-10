@@ -7,10 +7,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import LeftNav from "../pages/Shared/Leftnav/LeftNav";
 import RightNav from "../pages/Shared/RightNav/RightNav";
+import NavigationBar from "../pages/Shared/NavigationBar/NavigationBar";
 const Main = () => {
   return (
     <div>
       <Header></Header>
+      <NavigationBar></NavigationBar>
       <Container>
         <Row>
           <Col lg={3}><LeftNav></LeftNav></Col>
