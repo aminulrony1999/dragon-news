@@ -17,8 +17,11 @@ const Header = () => {
       <div className="d-flex">
         <Button variant="danger">Latest News</Button>{" "}
         <Marquee className="text-danger" speed={100} pauseOnHover={true}>
-          Welcome to my Developer Portfolio. I am a new developer. Recently, I
-          have started to learn web development.
+          Breakthrough Discovery in Renewable Energy Promises Sustainable Future
+          Global Leaders Gather for Climate Summit to Address Urgent
+          Environmental Concerns Tech Giants Unveil Revolutionary AI Technology
+          Set to Transform Industries Landmark Study Reveals Surprising Health
+          Benefits of Popular Superfood Space Exploration Milestone
         </Marquee>
       </div>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -33,7 +36,7 @@ const Header = () => {
             <Nav>
               <Nav.Link href="#deets">Profile</Nav.Link>
               <Nav.Link eventKey={2} href="#memes">
-              <Button variant="secondary">Log In</Button>
+                <Button variant="secondary">Log In</Button>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

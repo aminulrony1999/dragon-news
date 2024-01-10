@@ -44,7 +44,7 @@ const NewsCard = ({ news }) => {
               <FaRegStar />
             }
             placeholderSymbol={
-              <FaStar />
+              <FaStar className="text-warning" />
             }
             fullSymbol={
               <FaStar />
