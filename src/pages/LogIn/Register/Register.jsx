@@ -30,7 +30,7 @@ const Register = () => {
           <Form.Control
             type="email"
             name="email"
-            placeholder="Enter email"
+            placeholder="Enter your name"
             required
           />
         </Form.Group>
@@ -40,7 +40,7 @@ const Register = () => {
           <Form.Control
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="photo url"
             required
           />
         </Form.Group>
