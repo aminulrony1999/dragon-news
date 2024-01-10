@@ -8,6 +8,7 @@ import Home from "./pages/Home/Home/Home";
 import Category from "./pages/Home/Category/Category";
 import NewsLayout from "./layout/NewsLayout";
 import News from "./pages/News/News/News";
+import AuthProvider from "./Provider/AuthProvider";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,7 +16,8 @@ const router = createBrowserRouter([
     children : [
       {
         path : "/",
-        element : <Home></Home>
+        element : <Category></Category>,
+        loader : ()=>fetch('http://localhost:5000/news')
       },
       {
         path : 'category/:id',
@@ -39,6 +41,6 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider><RouterProvider router={router} /></AuthProvider>
   </React.StrictMode>
 );
