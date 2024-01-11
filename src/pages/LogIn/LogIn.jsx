@@ -1,38 +1,50 @@
 import React, { useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const LogIn = () => {
   const navigate = useNavigate();
-  const {setUser, logIn} = useContext(AuthContext);
+  const { setUser, logIn } = useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/category/0";
   const handleLogIn = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    logIn(email,password)
-    .then(user => {
-      setUser(user);
-      form.reset();
-      navigate("/category/0");
-    })
-    .catch(error =>{
-      console.error(error.message);
-    })
-  }
+    logIn(email, password)
+      .then((user) => {
+        setUser(user);
+        form.reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
   return (
     <Container className="w-25 mx-auto">
       <h3>Please Log In</h3>
       <Form onSubmit={handleLogIn}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" name="email" placeholder="Enter email" required />
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            required
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" name="password" placeholder="Password" required />
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
@@ -40,7 +52,9 @@ const LogIn = () => {
         <Button variant="primary" type="submit">
           Log In
         </Button>
-        <Form.Text className="text-secondary">Don't have an account? <Link to="/register">Register</Link></Form.Text>
+        <Form.Text className="text-secondary">
+          Don't have an account? <Link to="/register">Register</Link>
+        </Form.Text>
         <Form.Text className="text-success"> HoiHoiHoi</Form.Text>
         <Form.Text className="text-danger"> HueHueHue</Form.Text>
       </Form>
