@@ -5,7 +5,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { FaCircleUser } from "react-icons/fa6";
 
 const NavigationBar = () => {
-  const user = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   return (
     <Container>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">

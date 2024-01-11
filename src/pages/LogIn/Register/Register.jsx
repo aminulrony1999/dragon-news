@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Register = () => {
+  const {newUser, setUser} = useContext(AuthContext);
+  const handleNewUser = (event) =>{
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    newUser(email,password)
+    .then(user =>{
+      setUser(user);
+      form.reset();
+    })
+    .catch(error =>{
+      console.error(error);
+    })
+  }
   return (
     <Container className="w-25 mx-auto">
       <h3>Please Register</h3>
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form onSubmit={handleNewUser}>
+        <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
@@ -16,7 +32,7 @@ const Register = () => {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3">
           <Form.Label>Photo URL:</Form.Label>
           <Form.Control
             type="text"
@@ -25,7 +41,7 @@ const Register = () => {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
@@ -35,16 +51,16 @@ const Register = () => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
             name="password"
-            placeholder="photo url"
+            placeholder="password"
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             type="password"
@@ -53,7 +69,7 @@ const Register = () => {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Group className="mb-3">
           <Form.Check type="checkbox" name="accept" label="Accept's terms and conditions" />
         </Form.Group>
         <Button variant="primary" type="submit">
