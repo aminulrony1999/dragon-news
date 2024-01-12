@@ -1,26 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Register = () => {
-  const {newUser, setUser} = useContext(AuthContext);
-  const handleNewUser = (event) =>{
+  const { newUser, setUser } = useContext(AuthContext);
+  const [ accepted, setAccepted ] = useState(false);
+  const handleNewUser = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     const name = form.name.value;
     const photo = from.photo.value;
-    newUser(email,password)
-    .then(user =>{
-      setUser(user);
-      form.reset();
-    })
-    .catch(error =>{
-      console.error(error);
-    })
-  }
+    newUser(email, password)
+      .then((user) => {
+        setUser(user);
+        form.reset();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const handleAccept = (event) => {
+    setAccepted(event.target.checked);
+  };
   return (
     <Container className="w-25 mx-auto">
       <h3>Please Register</h3>
@@ -72,13 +76,22 @@ const Register = () => {
           />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Check type="checkbox" name="accept" label="Accept's terms and conditions" />
+          <Form.Check
+            onClick={handleAccept}
+            type="checkbox"
+            name="accept"
+            label={
+              <>
+                Accept <Link to="/terms">terms and conditions</Link>
+              </>
+            }
+          />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disabled={!accepted}>
           Sign Up
         </Button>
         <Form.Text className="text-secondary">
-          Already have an account? <Link to="/register">Sign In</Link>
+          Already have an account? <Link to="/login">Sign In</Link>
         </Form.Text>
         <Form.Text className="text-success"> HoiHoiHoi</Form.Text>
         <Form.Text className="text-danger"> HueHueHue</Form.Text>

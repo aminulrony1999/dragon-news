@@ -13,6 +13,7 @@ import LoginLayout from "./layout/LoginLayout";
 import LogIn from "./pages/LogIn/LogIn";
 import Register from "./pages/LogIn/Register/Register";
 import PrivateRoute from "./pages/PrivateRoute/PrivateRoute";
+import Terms from "./pages/termsAndConditions/Terms";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path : "register",
         element : <Register></Register>
+      },
+      {
+        path : "terms",
+        element : <Terms></Terms>
       }
     ]
   },
