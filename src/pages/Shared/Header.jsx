@@ -15,7 +15,7 @@ const Header = () => {
         <p>{moment().format("dddd, MMMM D, YYYY")}</p>
       </div>
       <div className="d-flex">
-        <Button variant="danger">Latest News</Button>{" "}
+        <Button className="mb-1 py-1 px-1" variant="danger">Latest News</Button>{" "}
         <Marquee className="text-danger" speed={100} pauseOnHover={true}>
           Breakthrough Discovery in Renewable Energy Promises Sustainable Future
           Global Leaders Gather for Climate Summit to Address Urgent
