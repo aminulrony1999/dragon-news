@@ -25,11 +25,16 @@ const NavigationBar = () => {
             <Nav>
               {user && <FaCircleUser style={{ fontSize: "2rem" }} />}
               {user ? (
-                <Button onClick={handleLogOut}  variant="secondary">Log Out</Button>
+                <Button className="ml-3" onClick={handleLogOut}  variant="secondary">Log Out</Button>
               ) : (
+                <>
                 <Link to="/login">
                   <Button variant="secondary">Log In</Button>
                 </Link>
+                <Link to="/register">
+                  <Button className="ml-3" variant="secondary">Register</Button>
+                </Link>
+                </>
               )}
             </Nav>
           </Navbar.Collapse>
