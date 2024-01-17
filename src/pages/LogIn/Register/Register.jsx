@@ -1,22 +1,26 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/category/0";
   const { newUser, setUser } = useContext(AuthContext);
-  const [ accepted, setAccepted ] = useState(false);
+  const [accepted, setAccepted] = useState(false);
   const handleNewUser = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     const name = form.name.value;
-    const photo = from.photo.value;
+    const photo = form.photo.value;
     newUser(email, password)
       .then((user) => {
         setUser(user);
         form.reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
@@ -93,8 +97,6 @@ const Register = () => {
         <Form.Text className="text-secondary">
           Already have an account? <Link to="/login">Sign In</Link>
         </Form.Text>
-        <Form.Text className="text-success"> HoiHoiHoi</Form.Text>
-        <Form.Text className="text-danger"> HueHueHue</Form.Text>
       </Form>
     </Container>
   );
